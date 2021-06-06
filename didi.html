@@ -65,17 +65,14 @@ function myFunction() {
 }
 
 
-// helper functions
 const PI2 = Math.PI * 2
 const random = (min, max) => Math.random() * (max - min + 1) + min | 0
 const timestamp = _ => new Date().getTime()
 
-// container
 class Birthday {
   constructor() {
     this.resize()
 
-    // create a lovely place to store the firework
     this.fireworks = []
     this.counter = 0
 
@@ -118,8 +115,7 @@ class Birthday {
     ctx.globalCompositeOperation = 'lighter'
     for (let firework of this.fireworks) firework.update(delta)
 
-    // if enough time passed... create new new firework
-    this.counter += delta * 3 // each second
+    this.counter += delta * 3
     if (this.counter >= 1) {
       this.fireworks.push(new Firework(
         random(this.spawnA, this.spawnB),
@@ -131,7 +127,6 @@ class Birthday {
       this.counter = 0
     }
 
-    // remove the dead fireworks
     if (this.fireworks.length > 1000) this.fireworks = this.fireworks.filter(firework => !firework.dead)
 
   }
